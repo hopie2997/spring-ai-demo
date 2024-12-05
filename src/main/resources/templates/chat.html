@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chat</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
+    <style>
+        .chat-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-box {
+            height: 80vh;
+            overflow-y: auto;
+        }
+
+        .card {
+            width: 80vh;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .bot-avatar {
+            margin-right: 20px;
+        }
+
+        .user-avatar {
+            margin-left: 20px;
+        }
+
+        .message-wrapper {
+            width: 100%;
+            display: flex;
+        }
+
+        .alert {
+            display: inline-flex;
+        }
+
+        .user-message {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .bot-message {
+            animation: slideInFromLeft 0.5s ease-out;
+        }
+
+        @keyframes slideUpFromBottom {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .user-message {
+            animation: slideUpFromBottom 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+<div class="container chat-container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">Chat</div>
+                <div class="card-body chat-box" id="chat-box">
+                    <!-- Messages will be displayed here -->
+                </div>
+                <div class="card-footer">
+                    <form id="chat-form">
+                        <div class="input-group">
+                            <input class="form-control" id="message" placeholder="Type a message" type="text">
+                            <button class="btn btn-primary" type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/chat.js}"></script>
+</body>
+</html>
